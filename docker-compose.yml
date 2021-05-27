@@ -1,0 +1,20 @@
+version: "3"
+services:
+    web:
+        build: ClientService.Server
+        container_name: 'ClientService'
+        ports:
+            - 5000:5000
+        restart: always
+        links:
+            - db:mongodb-host
+    db:
+        build: ./ClientService.Database
+        container_name: 'MongoDB'
+        expose: 
+            - 27017
+        ports:
+            - 27017:27017
+        volumes:
+            - ./ClientService.Database/data/db:/var/lib/mongodb
+        restart: always
