@@ -34,6 +34,8 @@ namespace ClientsService.Web
 
             services.AddTransient<IClientsService, BLL.ClientsService>();
             services.AddTransient<IClientsRepository, ClientsRepository>();
+
+            services.AddSwaggerGen();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -44,11 +46,20 @@ namespace ClientsService.Web
                 app.UseDeveloperExceptionPage();
             }
 
+            app.UseHttpsRedirection();
+
+            app.UseSwagger();
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
+                c.RoutePrefix = string.Empty;
+            });
+
             app.UseRouting();
 
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapControllerRoute(name: "default", pattern: "clients");
+                endpoints.MapControllers();
             });
         }
     }
