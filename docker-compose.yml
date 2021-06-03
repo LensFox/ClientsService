@@ -2,19 +2,26 @@ version: "3"
 services:
     web:
         build: ClientService.Server
-        container_name: 'ClientService'
+        container_name: 'clients_service'
         ports:
-            - 5000:5000
+            - 5000:80
+        environment: 
+            # - ASPNETCORE_ENVIRONMENT=Development
+            # - ASPNETCORE_URLS=https://+:443;http://+:80 
+            # - DOTNET_USE_POLLING_FILE_WATCHER=1 
+            # - ASPNETCORE_LOGGING__CONSOLE__DISABLECOLORS=true 
         restart: always
         links:
-            - db:mongodb-host
-    db:
-        build: ./ClientService.Database
-        container_name: 'MongoDB'
-        expose: 
-            - 27017
-        ports:
-            - 27017:27017
+            - mongodb:mongodb-host
+    mongodb:
+        image: mongo
+        container_name: mongodb
         volumes:
-            - ./ClientService.Database/data/db:/var/lib/mongodb
-        restart: always
+            - data/db var/data/db
+
+#-e "DOTNET_USE_POLLING_FILE_WATCHER=1" 
+#-e "ASPNETCORE_LOGGING__CONSOLE__DISABLECOLORS=true" 
+#-e "ASPNETCORE_ENVIRONMENT=Development" 
+#-e "ASPNETCORE_URLS=https://+:443;http://+:80" 
+#-e "NUGET_PACKAGES=/root/.nuget/fallbackpackages2" 
+#-e "NUGET_FALLBACK_PACKAGES=/root/.nuget/fallbackpackages;/root/.nuget/fallbackpackages2"

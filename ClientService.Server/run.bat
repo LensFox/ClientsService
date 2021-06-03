@@ -1,2 +1,2 @@
 docker build -t web .
-docker run -p 5000:5000 -p 5001:5001 web
+docker run -e "ASPNETCORE_URLS=http://+:5000" -P web
