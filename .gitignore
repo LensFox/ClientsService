@@ -6,3 +6,4 @@ ClientService.Server/ClientsService/ClientsService.BLL.Tests/obj
 ClientService.Server/ClientsService/ClientsService.DDL/bin
 obj
 bin
+.vscode
