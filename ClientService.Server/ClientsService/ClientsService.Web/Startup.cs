@@ -32,6 +32,17 @@ namespace ClientsService.Web
                 return config;
             });
 
+            services.AddCors(options =>
+            {
+                options.AddDefaultPolicy(
+                    builder =>
+                    {
+                        builder.AllowAnyOrigin()
+                               .AllowAnyHeader()
+                               .AllowAnyMethod();
+                    });
+            });
+
             services.AddTransient<IClientsService, BLL.ClientsService>();
             services.AddTransient<IClientsRepository, ClientsRepository>();
 
@@ -56,6 +67,8 @@ namespace ClientsService.Web
             });
 
             app.UseRouting();
+
+            app.UseCors();
 
             app.UseEndpoints(endpoints =>
             {
