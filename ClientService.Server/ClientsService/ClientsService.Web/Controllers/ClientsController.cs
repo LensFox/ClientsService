@@ -1,7 +1,6 @@
 ﻿using ClientsService.BLL;
 using Microsoft.AspNetCore.Mvc;
 using System;
-using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace ClientsService.Web.Controllers
@@ -19,16 +18,15 @@ namespace ClientsService.Web.Controllers
 
         [HttpGet]
         [Route("")]
-        public async Task<ActionResult<IEnumerable<ClientModel>>> GetAllClients()
+        public async Task<ActionResult> GetAllClients()
         {
             var clients = await this.clientsService.GetAllClients();
-
             return this.Ok(clients);
         }
 
         [HttpGet]
         [Route("{id}")]
-        public async Task<ActionResult<ClientModel>> GetClient(Guid id)
+        public async Task<ActionResult> GetClient(Guid id)
         {
             var client = await this.clientsService.GetClient(id);
 
