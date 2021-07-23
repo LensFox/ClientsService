@@ -9,9 +9,18 @@ import DeleteIcon from '@material-ui/icons/Delete';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import { uuidv4 } from './helpers';
+import { makeStyles } from '@material-ui/core';
+
+const useStyles = makeStyles((theme) => ({
+    root: {
+        margin: theme.spacing(2)
+    }
+}));
 
 const ClientsTable = ({ clients, onDelete, onSave }) => {
     const [newClientName, setNewClientName] = useState('');
+
+    const classes = useStyles();
 
     const handleOnNameChange = (event) => {
         setNewClientName(event.target.value)
@@ -26,7 +35,7 @@ const ClientsTable = ({ clients, onDelete, onSave }) => {
     }
 
     return (
-        <Table>
+        <Table className={classes.root}>
             <TableHead>
                 <TableRow>
                     <TableCell>Id</TableCell>
