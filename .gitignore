@@ -7,3 +7,4 @@ ClientService.Server/ClientsService/ClientsService.DDL/bin
 obj
 bin
 .vscode
+node_modules
