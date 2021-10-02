@@ -12,7 +12,7 @@
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-redux": "^7.2.4",
-    "react-scripts": "4.0.3",
+    "react-scripts": "^4.0.3",
     "redux": "^4.1.0",
     "redux-thunk": "^2.3.0",
     "web-vitals": "^1.1.2"
@@ -20,7 +20,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "jest",
+    "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
@@ -40,5 +40,20 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "prettier": {
+    "printWidth": 80,
+    "trailingComma": "none",
+    "tabWidth": 4,
+    "useTabs": false,
+    "semi": true,
+    "singleQuote": true,
+    "parser": "flow",
+    "bracketSpacing": true,
+    "arrowParens": "always",
+    "endOfLine": "auto"
+  },
+  "devDependencies": {
+    "babel-jest": "^27.0.6"
   }
 }
