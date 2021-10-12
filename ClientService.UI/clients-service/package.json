@@ -54,6 +54,5 @@
     "endOfLine": "auto"
   },
   "devDependencies": {
-    "babel-jest": "^27.0.6"
   }
 }
