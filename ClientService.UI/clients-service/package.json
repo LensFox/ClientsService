@@ -20,7 +20,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test": "jest --coverage",
     "eject": "react-scripts eject"
   },
   "jest": {
@@ -28,7 +28,6 @@
       "js",
       "vue"
     ],
-    "testResultsProcessor": "jest-teamcity-reporter",
     "coverageReporters": ["lcov", "text", "teamcity"]
   },
   "eslintConfig": {
