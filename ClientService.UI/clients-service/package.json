@@ -28,6 +28,7 @@
       "js",
       "vue"
     ],
+    "testResultsProcessor": "jest-teamcity-reporter",
     "coverageReporters": ["lcov", "text", "teamcity"]
   },
   "eslintConfig": {
@@ -61,5 +62,7 @@
     "endOfLine": "auto"
   },
   "devDependencies": {
+    "jest": "^24.9.0",
+    "jest-teamcity-reporter": "^0.9.0"
   }
 }
