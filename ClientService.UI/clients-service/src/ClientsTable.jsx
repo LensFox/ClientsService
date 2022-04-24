@@ -11,6 +11,8 @@ import Button from '@material-ui/core/Button';
 import { uuidv4 } from './helpers';
 import { makeStyles } from '@material-ui/core';
 
+import PropTypes from 'prop-types';
+
 const useStyles = makeStyles((theme) => ({
     root: {
         margin: theme.spacing(2)
@@ -23,8 +25,8 @@ const ClientsTable = ({ clients, onDelete, onSave }) => {
     const classes = useStyles();
 
     const handleOnNameChange = (event) => {
-        setNewClientName(event.target.value)
-    }
+        setNewClientName(event.target.value);
+    };
 
     const handleOnAddClient = () => {
         const client = {
@@ -32,7 +34,7 @@ const ClientsTable = ({ clients, onDelete, onSave }) => {
             name: newClientName
         };
         onSave(client);
-    }
+    };
 
     return (
         <Table className={classes.root}>
@@ -46,10 +48,22 @@ const ClientsTable = ({ clients, onDelete, onSave }) => {
             <TableBody>
                 <TableRow>
                     <TableCell />
-                    <TableCell><TextField value={newClientName} onChange={handleOnNameChange}/></TableCell>
-                    <TableCell><Button onClick={handleOnAddClient} variant={'outlined'}>Save</Button></TableCell>
+                    <TableCell>
+                        <TextField
+                            value={newClientName}
+                            onChange={handleOnNameChange}
+                        />
+                    </TableCell>
+                    <TableCell>
+                        <Button
+                            onClick={handleOnAddClient}
+                            variant={'outlined'}
+                        >
+                            Save
+                        </Button>
+                    </TableCell>
                 </TableRow>
-                {clients.map(client => (
+                {clients.map((client) => (
                     <TableRow key={client.id}>
                         <TableCell>{client.id}</TableCell>
                         <TableCell>{client.name}</TableCell>
@@ -62,7 +76,12 @@ const ClientsTable = ({ clients, onDelete, onSave }) => {
                 ))}
             </TableBody>
         </Table>
-    )
-}
+    );
+};
 
-export default ClientsTable
+ClientsTable.propTypes = {
+    onDelete: PropTypes.func,
+    onSave: PropTypes.func
+};
+
+export default ClientsTable;
